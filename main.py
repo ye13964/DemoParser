@@ -13,7 +13,7 @@ Player = {}
 enginefps = []
 realfps = []
 
-f = bit_open('/Volumes/Zhanghd/2.dem', 'r')
+f = bit_open('/Volumes/Zhanghd/3.dem', 'r')
 
 # 开始解析
 magic = f.ReadString(8)
@@ -58,10 +58,9 @@ fh.frame = f.ReadInt()
 print(fh)
 if fh.type == 0:
     f.byte_file.seek(220, 1)
-    NetMsg.ResolutionWidth = f.ReadInt()
-    NetMsg.ResolutionHeight = f.ReadInt()
-    # print(NetMsg.ResolutionWidth, NetMsg.ResolutionHeight)
+    f.byte_file.read(8)
     if cvars_flag == 0:
+        f.byte_file.seek(60, 1)
         cvars.getCvars(f)
         # print(cvars)
         f.byte_file.seek(108, 1)
@@ -73,10 +72,10 @@ if fh.type == 0:
     else:
         f.byte_file.seek(236, 1)
         NetMsg.Length = f.ReadInt()
-        # print(NetMsg.Length)
-
-dataParser(f,Player)
-f.byte_file.seek(-1,1)
+    # print(NetMsg.Length)
+    dataParser(f, Player)
+# print(Player)
+    f.byte_file.seek(-1,1)
 
 # print(Player)
 
@@ -96,14 +95,20 @@ while True:
         ftime = f.ReadFloat()
         # print(ftime)
         realfps.append(ftime)
-        f.byte_file.seek(170, 1)
+        f.byte_file.seek(152, 1)
+        NetMsg.ResolutionWidth = f.ReadInt()
+        NetMsg.ResolutionHeight = f.ReadInt()
+        f.byte_file.seek(10, 1)
         msec = f.ReadUint8()
         enginefps.append(msec)
         # print(msec)
-        f.byte_file.seek(225, 1)
+        f.byte_file.seek(49,1)
+        cvars.getCvars(f)
+        f.byte_file.seek(108, 1)
         # f.byte_file.seek(196, 1)
         length1 = f.ReadInt()
         f.byte_file.read(length1)
+
     elif type == 2:
         continue
     elif type == 3:
@@ -130,12 +135,18 @@ while True:
         length = f.ReadSInt()
         f.byte_file.seek(length,1)
 
+#
+# print(dh)
+# print(cvars)
+# print(Player)
+# EngineFpsMax = 1000.0 / min(enginefps)
+# RealFpsMax = 1.0 / min(realfps)
+# print(EngineFpsMax, RealFpsMax)
+#
 
 
-EngineFpsMax = 1000.0 / min(enginefps)
-RealFpsMax = 1.0 / min(realfps)
-print(EngineFpsMax, RealFpsMax)
-
-
-
-
+print(dh)
+print(NetMsg.ResolutionWidth, NetMsg.ResolutionHeight)
+for key,value in Player.items():
+    print('{key}:{value}'.format(key = key, value = value))
+print(cvars)

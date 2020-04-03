@@ -68,7 +68,7 @@ class Cvars:
     footsteps = 0
 
     def getCvars(self,handle):
-        handle.byte_file.seek(60, 1)
+        # handle.byte_file.seek(60, 1)
         self.gravity = handle.ReadFloat()
         self.stopspeed = handle.ReadFloat()
         self.maxspeed = handle.ReadFloat()

@@ -64,10 +64,15 @@ class MsgType(Enum):
 def dataParser(f,pDic):
     while True:
         type = f.ReadUint8()
-        if type == 8:
+        if type == 7:
+            f.byte_file.read(4)
+
+        elif type == 8:
             MessagePrint(f)
         elif type == 11:
             MessageServerInfo(f)
+        elif type == 15:
+            MessageClientData(f)
         elif type == 54:
             MessageSendExtraInfo(f)
         elif type == 14:
@@ -77,9 +82,11 @@ def dataParser(f,pDic):
         elif type == 9:
             MessageStuffText(f)
         elif type == 13:
-            MessageUpdateUserInfo(f,pDic)
+            MessageUpdateUserInfo(f, pDic)
         elif type == 45:
             f.byte_file.seek(8,1)
+        elif type == 58:
+            MessageSendCvarValue2(f)
         # elif type == 43:
         #     MessageResourceList(f)
         else:
@@ -153,6 +160,13 @@ def MessageUpdateUserInfo(f,pDic):
 
 # def MessageResourceList(f):
 #     nEntries = f.read_bits(12)
+
+def MessageSendCvarValue2(f):
+    f.byte_file.seek(4, 1)
+    f.ReadCharStr()
+
+def MessageClientData(f):
+    return
 
 
 
