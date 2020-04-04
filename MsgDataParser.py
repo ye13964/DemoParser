@@ -64,9 +64,9 @@ class MsgType(Enum):
 def dataParser(f,pDic):
     while True:
         type = f.ReadUint8()
+        ## SVC_TIME
         if type == 7:
             f.byte_file.read(4)
-
         elif type == 8:
             MessagePrint(f)
         elif type == 11:

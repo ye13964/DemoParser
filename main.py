@@ -13,7 +13,7 @@ Player = {}
 enginefps = []
 realfps = []
 
-f = bit_open('/Volumes/Zhanghd/3.dem', 'r')
+f = bit_open('/Volumes/Zhanghd/6.dem', 'r')
 
 # 开始解析
 magic = f.ReadString(8)
@@ -107,7 +107,14 @@ while True:
         f.byte_file.seek(108, 1)
         # f.byte_file.seek(196, 1)
         length1 = f.ReadInt()
+
         f.byte_file.read(length1)
+
+
+
+        # print(f.ReadFloat())
+
+        # break
 
     elif type == 2:
         continue
@@ -145,8 +152,12 @@ while True:
 #
 
 
-print(dh)
-print(NetMsg.ResolutionWidth, NetMsg.ResolutionHeight)
-for key,value in Player.items():
-    print('{key}:{value}'.format(key = key, value = value))
-print(cvars)
+# print(dh)
+# print('Resolution:')
+# print(NetMsg.ResolutionWidth, '*', NetMsg.ResolutionHeight, '\n')
+# print("Player Info:")
+# for key,value in Player.items():
+#     print('{key}:{value}'.format(key = key, value = value))
+# print()
+# print('Cvars:')
+# print(cvars)
