@@ -6,7 +6,7 @@
 一个HLDEMO的总体框架
 
 
-<b><details><summary>Demo总体框架</summary></b>
+<details><summary>Demo总体框架</summary>
 
 ```
 Demo{
@@ -63,8 +63,8 @@ Demo{
 
 
 ## DemoMacroData部分
-
-<b><details><summary>DemoMacroData</summary></b>
+### DemoMacroData 整体结构
+<details><summary>DemoMacroData</summary>
 
 
 ```
@@ -236,8 +236,7 @@ Unknown{
 ### Game Date(DemoMacroData Type 0/1) Msg
 这部分是当前面`DemoMacroData`类型为0或1时，最后尾部`std::vector<unsigned char> msg`部分，只能根据读取的类型进行动态解析。 
 
-
-<b><details><summary>Type</summary></b>
+<details><summary>Type</summary>
 
 一共有这么多类型，读到的uint8转化成十进制代表的数据类型，根据类型不同结构不同，解析的方法也不同。
 
