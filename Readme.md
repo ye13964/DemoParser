@@ -4,6 +4,10 @@
 
 ## 总体框架 
 一个HLDEMO的总体框架
+
+<details>
+<summary>Demo总体框架</summary>
+
 ```
 Demo{
     DemoHeader{
@@ -52,6 +56,9 @@ Demo{
 }
 
 ```
+</details>
+
+
 
 
 
