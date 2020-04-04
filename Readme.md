@@ -233,7 +233,7 @@ Unknown{
 ```
 </details>
 
-## Game Date(DemoMacroData Type 0/1) Msg
+### Game Date(DemoMacroData Type 0/1) Msg
 这部分是当前面`DemoMacroData`类型为0或1时，最后尾部`std::vector<unsigned char> msg`部分，只能根据读取的类型进行动态解析。 
 
 
