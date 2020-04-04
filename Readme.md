@@ -7,7 +7,7 @@
 ```
 Demo{
     DemoHeader{
-        char		magic[8];	// 'HLDEMO'
+            char		magic[8];	// 'HLDEMO'
 	    uint32 		demo_version;
 	    uint32		network_version;
 	    char		map_name[260];
@@ -19,7 +19,7 @@ Demo{
     DemoSegment{
         DemoMacroBlock{
             DemoMacroHeader{
-                uint8		type;
+                    uint8		type;
 	            float		time;
 	            uiint32		frame;
             }
@@ -36,7 +36,7 @@ Demo{
 
     uint32		number;
     DemoDirectoryEntry{
-        uint32      type
+            uint32              type
 	    char		title[64];
 	    uint32		flags;
 	    int32		play;
